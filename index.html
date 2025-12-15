@@ -1,74 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- ===== CONFIGURAÇÕES DO SITE ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Garimpos do Gu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header class="main-header">
-    <div class="header-left">
-      <button id="open-admin" class="gear" title="Área Administrativa">⚙</button>
-      <h1 id="logo">Garimpos do Gu</h1>
-    </div>
 
-    <div class="header-center inner">
-      <input id="search" type="search" placeholder="Buscar produtos... (ex: fone, carregador)" />
-      <select id="sort" aria-label="Ordenar">
-        <option value="relevancia">Ordenar: relevância</option>
-        <option value="preco-asc">Preço: menor → maior</option>
-        <option value="preco-desc">Preço: maior → menor</option>
-        <option value="novo">Mais novos</option>
-      </select>
-      <button id="favorites-filter" title="Mostrar favoritos">☆ Favoritos</button>
-    </div>
-
-    <div class="header-right inner">
-      <button id="toggle-theme" title="Alternar tema">🌙</button>
-      <button id="toggle-mode" title="Alternar modo visual">📱 Modo Celular</button>
-    </div>
+  <!-- ===== CABEÇALHO ===== -->
+  <header>
+    <h1 id="logo">Garimpos do Gu</h1>
+    <div class="gear" onclick="window.location.href='admin.html'">⚙</div>
+    <button id="toggle-mode">Modo Celular</button>
   </header>
 
-  <div class="destaques"><span id="destaque-texto">Itens em Promoção</span></div>
-
-  <section class="carousel" aria-label="Carrossel de promoções">
-    <div class="carousel-container" id="carousel-container">
-      <!-- Itens inseridos via JS -->
-    </div>
-    <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Navegação do carrossel"></div>
-  </section>
-
-  <div class="container">
-    <div class="inner">
-      <aside class="sidebar" aria-label="Categorias">
-        <h3>Categorias</h3>
-        <ul id="categoria-list">
-          <li data-cat="Todos" class="active">Todos</li>
-          <li data-cat="Eletrodomésticos">Eletrodomésticos</li>
-          <li data-cat="Utensílios de cozinha">Utensílios de cozinha</li>
-          <li data-cat="Peças de carro">Peças de carro</li>
-          <li data-cat="Celulares & Acessórios">Celulares & Acessórios</li>
-          <li data-cat="Roupas & Itens de Moda">Roupas & Itens de Moda</li>
-          <li data-cat="Videogames & Jogos">Videogames & Jogos</li>
-        </ul>
-      </aside>
-
-      <main class="products">
-        <h2>Produtos em Destaque</h2>
-        <div id="produtos" class="produtos-grid" aria-live="polite"></div>
-        <div class="pagination" id="pagination"></div>
-      </main>
-    </div>
+  <!-- ===== DESTAQUES PROMOCIONAIS ===== -->
+  <div class="destaques">
+    <span id="destaque-texto">Itens em Promoção</span>
   </div>
 
+  <!-- ===== CARROSSEL ===== -->
+  <section class="carousel">
+    <div class="carousel-container">
+      <img src="https://via.placeholder.com/1200x300?text=Promoção+1" />
+      <img src="https://via.placeholder.com/1200x300?text=Promoção+2" />
+      <img src="https://via.placeholder.com/1200x300?text=Promoção+3" />
+    </div>
+  </section>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <div class="container">
+
+    <!-- ===== CATEGORIAS ===== -->
+    <aside class="sidebar">
+      <h3>Categorias</h3>
+      <ul>
+        <li onclick="filtrarCategoria('Todos')">Todos</li>
+        <li onclick="filtrarCategoria('Eletrodomésticos')">Eletrodomésticos</li>
+        <li onclick="filtrarCategoria('Utensílios de cozinha')">Utensílios de cozinha</li>
+        <li onclick="filtrarCategoria('Peças de carro')">Peças de carro</li>
+        <li onclick="filtrarCategoria('Celulares & Acessórios')">Celulares & Acessórios</li>
+        <li onclick="filtrarCategoria('Roupas & Itens de Moda')">Roupas & Itens de Moda</li>
+        <li onclick="filtrarCategoria('Videogames & Jogos')">Videogames & Jogos</li>
+      </ul>
+    </aside>
+
+    <!-- ===== PRODUTOS ===== -->
+    <main class="products">
+      <h2>Produtos em Destaque</h2>
+      <div id="produtos" class="produtos-grid"></div>
+    </main>
+
+  </div>
+
+  <!-- ===== RODAPÉ ===== -->
   <footer>
     <p>&copy; 2025 Garimpos do Gu - Todos os direitos reservados.</p>
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    document.getElementById('open-admin')?.addEventListener('click', () => window.location.href = 'admin.html');
-  </script>
 </body>
 </html>
